@@ -1,6 +1,6 @@
 ## Send message from iframe to parent context
 
-- Create (`ScriptService.cs`)
+1. Create (`ScriptService.cs`)
 
 ```csharp
 public class ScriptService {
@@ -16,13 +16,13 @@ public class ScriptService {
 }
 ```
 
-- Register as scope service (`Program.cs`)
+2. Register as scope service (`Program.cs`)
 
 ```
 builder.Services.AddScoped<ScriptService>();
 ```
 
-- Listen window's message (`index.js`)
+3. Listen window's message (`index.js`)
 
 ```javascript
 function bindEvent(element, eventName, eventHandler) {
