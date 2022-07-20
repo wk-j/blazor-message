@@ -39,3 +39,31 @@ bindEvent(window, 'message', function (e) {
     console.log(e.data)
 });
 ```
+
+4. Send message
+
+```html
+@page "/my-frame"
+@using MyWeb.Services
+@layout EmptyLayout
+
+<button @onclick="SendMessage">Send Message</button>
+
+@code {
+
+    class Model
+    {
+        public string Name { set; get; }
+        public int Age { set; get; }
+    }
+
+    [Inject]
+    public ScriptService JS { set; get; }
+
+    private async Task SendMessage(MouseEventArgs args)
+    {
+        var model = new Model { Name = "wk", Age = 20 };
+        await JS.WindowParentPostMessage(model);
+    }
+}
+```
